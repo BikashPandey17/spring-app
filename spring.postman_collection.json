@@ -1,0 +1,64 @@
+{
+	"variables": [],
+	"info": {
+		"name": "spring",
+		"_postman_id": "b28fd686-63a8-137c-1917-1e99d5d55afb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "service1 get",
+			"request": {
+				"url": "localhost:8080/api/v1/service1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "service1 get"
+			},
+			"response": []
+		},
+		{
+			"name": "service2 get",
+			"request": {
+				"url": "localhost:8081/api/v1/service2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "service1 get"
+			},
+			"response": []
+		},
+		{
+			"name": "api-docs",
+			"request": {
+				"url": "localhost:8080/api/v1/service1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "service1 get"
+			},
+			"response": []
+		},
+		{
+			"name": "service1 post",
+			"request": {
+				"url": "localhost:8080/api/v1/service1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Name\": \"John\",\n\t\"Surnam\": \"Doe\"\n}"
+				},
+				"description": "service1 post"
+			},
+			"response": []
+		}
+	]
+}

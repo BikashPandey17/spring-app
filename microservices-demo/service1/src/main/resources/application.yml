@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: service1
+
+services:
+  uri: ${SERVICE_2_URI:http://localhost:8081/api/v1/service2}
