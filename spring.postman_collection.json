@@ -59,6 +59,26 @@
 				"description": "service1 post"
 			},
 			"response": []
+		},
+		{
+			"name": "service3 post",
+			"request": {
+				"url": "localhost:8080/api/v1/service1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Name\": \"John\",\n\t\"Surnam\": \"Doe\"\n}"
+				},
+				"description": "service1 post"
+			},
+			"response": []
 		}
 	]
 }
