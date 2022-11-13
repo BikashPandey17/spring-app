@@ -1,9 +1,0 @@
-server:
-  port: 8081
-
-spring:
-  application:
-    name: service2
-
-zipkin:
-  base-url: ${ZIPKIN_URl:http://locahost:9411}

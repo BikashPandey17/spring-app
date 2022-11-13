@@ -10,6 +10,7 @@
 		<module>service1</module>
 		<module>service2</module>
 		<module>service3</module>
+		<module>service4</module>
 	</modules>
 	<name>microservices-demo</name>
 	<description>microservices-demo project for Spring Boot</description>
