@@ -1,8 +1,7 @@
-package com.example.appOne;
+package com.example.appthree;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -13,7 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@EnableConfigurationProperties(AppConfig.class)
 public class Application {
 
     public static void main(String[] args) {
@@ -32,8 +30,8 @@ public class Application {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Service 1 API")
-                .description("Service 1 API")
+                .title("Service 3 API")
+                .description("Service 3 API")
                 .version("1.0")
                 .build();
     }

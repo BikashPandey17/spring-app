@@ -1,4 +1,4 @@
-package com.example.appOne.payload;
+package com.example.appone.payload;
 
 import java.util.Map;
 

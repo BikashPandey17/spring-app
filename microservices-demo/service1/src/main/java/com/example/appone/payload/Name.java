@@ -1,8 +1,16 @@
-package com.example.appOne.payload;
+package com.example.appone.payload;
+import javax.validation.constraints.NotEmpty;
 
 public class Name {
-    String firstName;
-    String lastName;
+    @NotEmpty String firstName;
+    @NotEmpty String lastName;
+
+    protected Name() {}
+
+    public Name(@NotEmpty String firstName, @NotEmpty String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;

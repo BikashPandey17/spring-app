@@ -9,6 +9,7 @@
 	<modules>
 		<module>service1</module>
 		<module>service2</module>
+		<module>service3</module>
 	</modules>
 	<name>microservices-demo</name>
 	<description>microservices-demo project for Spring Boot</description>
@@ -16,6 +17,7 @@
 		<java.version>11</java.version>
 		<spring.boot.maven.plugin.version>2.5.7</spring.boot.maven.plugin.version>
 		<spring.boot.dependencies.version>2.5.7</spring.boot.dependencies.version>
+		<spring.cloud-version>2020.0.3</spring.cloud-version>
 	</properties>
 
 	<dependencyManagement>
@@ -27,6 +29,13 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -36,9 +45,25 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
 	</dependencies>
 

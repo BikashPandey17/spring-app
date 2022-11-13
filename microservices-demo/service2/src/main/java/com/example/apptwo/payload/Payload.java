@@ -1,4 +1,4 @@
-package com.example.appTwo.payload;
+package com.example.apptwo.payload;
 
 import java.util.Map;
 
