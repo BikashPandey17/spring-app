@@ -1,0 +1,20 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: service4
+  datasource:
+    password: ${DATABASE_PASSWORD:password}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5434/database}
+    username: ${DATABASE_USER:bikash}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  zipkin:
+    base-url: ${ZIPKIN_URl:http://localhost:9411}
