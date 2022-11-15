@@ -30,6 +30,17 @@
 			"response": []
 		},
 		{
+			"name": "service4 get",
+			"request": {
+				"url": "localhost:8083/api/v1/service3",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "service1 get"
+			},
+			"response": []
+		},
+		{
 			"name": "api-docs",
 			"request": {
 				"url": "localhost:8080/api/v1/service1",
@@ -75,6 +86,26 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"Name\": \"John\",\n\t\"Surnam\": \"Doe\"\n}"
+				},
+				"description": "service1 post"
+			},
+			"response": []
+		},
+		{
+			"name": "service4 post",
+			"request": {
+				"url": "localhost:8083/api/v1/service4",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"color\": \"lightblue\",\n  \"name\": \"Assassin\",\n  \"parentid\": 13\n}"
 				},
 				"description": "service1 post"
 			},
