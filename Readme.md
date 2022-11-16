@@ -154,6 +154,7 @@ Update the application [settings](service1/src/main/resources/application.yml) o
 export SERVICE_2_URI=http://localhost:8081/api/v1/service2
 export SERVICE_3_URI=http://localhost:8082/api/v1/service3
 export ZIPKIN_URl=http://locahost:9411
+export SERVICE_1_PORT=8080
 ```
 
 ```
@@ -244,6 +245,7 @@ Update the application [settings](service2/src/main/resources/application.yml) o
 
 ```
 export ZIPKIN_URl=http://locahost:9411
+export SERVICE_2_PORT=8080
 ```
 
 ```
@@ -296,12 +298,22 @@ cd service2
 2022-11-16 02:15:02.777  INFO [service2,,] 1594864 --- [           main] com.example.apptwo.Application           : Started Application in 2.632 seconds (JVM running for 2.867)
 ```
 
+### The APIs exposed by the Spring application:
+
+
+```
+curl -X GET \
+  http://localhost:8081/api/v1/service2/hello \
+  -H 'cache-control: no-cache'
+```
+
 ## Service 3
 
-Update the application [settings](service2/src/main/resources/application.yml) or set using the following enviroment variables, `ZIPKIN_URl` is the zipkin url for distributed trace.
+Update the application [settings](service3/src/main/resources/application.yml) or set using the following enviroment variables, `ZIPKIN_URl` is the zipkin url for distributed trace.
 
 ```
 export ZIPKIN_URl=http://locahost:9411
+export SERVICE_3_PORT=8080
 ```
 
 ```
@@ -355,7 +367,32 @@ cd service3
 
 ```
 
+### The APIs exposed by the Spring application:
+
+
+```
+curl -X POST \
+  http://localhost:8082/api/v1/service3 \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -d '{
+	"firstName": "John",
+	"lastName": "Doe"
+}'
+```
+
+
 ## Service 4
+
+Service 4 encompasses everything in Task 2 and the usage of @LogMethodParam annotation. Update the application configuration in [application.yaml](service4/src/main/resources/application.yml) or set the following enviroment variables,
+
+```
+export SERVICE_4_PORT=8083
+export DATABASE_PASSWORD=XXX
+export DATABASE_URL=postgresql://localhost:5434/database
+export DATABASE_USER=XXX
+export ZIPKIN_URl=http://localhost:9411
+```
 
 ```
 cd service4
@@ -417,3 +454,36 @@ cd service4
 2022-11-16 02:15:58.507  INFO [service4,,] 1595342 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8083 (http) with context path ''
 2022-11-16 02:15:58.738  INFO [service4,,] 1595342 --- [           main] com.example.app.Application              : Started Application in 3.781 seconds (JVM running for 4.037)
 ```
+
+### The APIs exposed by the Spring application:
+
+To insert into DB:
+```
+curl -X POST \
+  http://localhost:8083/api/v1/service4 \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -d '{
+  "parentid": 13,
+  "name": "Assassin",
+  "color": "lightblue"
+}'
+```
+
+To fetch All records:
+```
+curl -X GET \
+  http://localhost:8083/api/v1/service4/ \
+  -H 'cache-control: no-cache' 
+```
+
+To fetch One record:
+```
+curl -X GET \
+  http://localhost:8083/api/v1/service4/2 \
+  -H 'cache-control: no-cache' 
+```
+
+Swagger URI - http://localhost:8083/swagger-ui/
+
+![Swagger dashboard](/images/serevice4-swagger.png)

@@ -44,6 +44,6 @@ public class AppService {
             return new ResponseEntity(resp, HttpStatus.OK);
         } catch (HttpClientErrorException  | HttpServerErrorException httpClientOrServerExc) {
             return new ResponseEntity(httpClientOrServerExc.getMessage(), httpClientOrServerExc.getStatusCode());
-        }
+        } //TODO catch java.net.ConnectException, and appropriate response
     }
 }
