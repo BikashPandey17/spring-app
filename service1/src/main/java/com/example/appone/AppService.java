@@ -12,6 +12,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.ConnectException;
+
 @Validated
 @Service
 public class AppService {
@@ -28,22 +30,18 @@ public class AppService {
         this.serviceThreeConfig = serviceThreeConfig;
     }
 
-    public ResponseEntity logic(Name name) throws Exception {
+    public ResponseEntity logic(Name name) throws Exception, ConnectException {
         logger.info("Service 1 post request: " + name.getFirstName() + " " + name.getLastName());
-        try {
-            String serviceThreeResp = restTemplate.postForObject(
-                    serviceThreeConfig.getUri(),
-                    name,
-                    String.class
-            );
-            String resp = restTemplate.getForObject(
-                    serviceTwoConfig.getUri() + "/{name}",
-                    String.class,
-                    serviceThreeResp
-            );
-            return new ResponseEntity(resp, HttpStatus.OK);
-        } catch (HttpClientErrorException  | HttpServerErrorException httpClientOrServerExc) {
-            return new ResponseEntity(httpClientOrServerExc.getMessage(), httpClientOrServerExc.getStatusCode());
-        } //TODO catch java.net.ConnectException, and appropriate response
+        String serviceThreeResp = restTemplate.postForObject(
+                serviceThreeConfig.getUri(),
+                name,
+                String.class
+        );
+        String resp = restTemplate.getForObject(
+                serviceTwoConfig.getUri() + "/{name}",
+                String.class,
+                serviceThreeResp
+        );
+        return new ResponseEntity(resp, HttpStatus.OK);
     }
 }
