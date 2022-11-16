@@ -4,6 +4,5 @@ server:
 spring:
   application:
     name: service3
-
-zipkin:
-  base-url: ${ZIPKIN_URl:http://locahost:9411}
+  zipkin:
+    base-url: ${ZIPKIN_URl:http://localhost:9411}
