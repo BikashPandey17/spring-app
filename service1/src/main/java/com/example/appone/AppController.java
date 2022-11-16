@@ -25,21 +25,19 @@ public class AppController {
         this.appService = appService;
     }
 
+    /**
+     * Returns "Up" if the service is up
+     */
     @GetMapping
     public String getMethod() {
-        /**
-         * Returns "Up" if the service is up
-         */
         return "Up";
     }
 
+    /**
+     * Returns the concatenated response from service2 get and service3 post
+     */
     @PostMapping
     public ResponseEntity postMethod(@Valid @RequestBody Name name, Errors errors) throws Exception {
-        /**
-         * Returns the concatenated response from service2 get and service3 post
-         */
-        //call to service3 post to receive a concatenated text
-        //call to service2 get to wrap with hello
         ResponseEntity resp = appService.logic(name);
         return resp;
     }

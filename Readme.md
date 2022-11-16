@@ -137,7 +137,7 @@ Create a method level Annotation @LogMethodParam which logs parameters passed to
 To start the required services like, postres, pgadmin, zipkin:
 
 ```
-docker compose-up 
+docker compose up 
 ```
 
 # Build & Run
@@ -384,7 +384,7 @@ curl -X POST \
 
 ## Service 4
 
-Service 4 encompasses everything in Task 2 and the usage of @LogMethodParam annotation. Update the application configuration in [application.yaml](service4/src/main/resources/application.yml) or set the following enviroment variables,
+Service 4 encompasses everything in Task 2 and the usage of [@LogMethodParam](/service4/src/main/java/com/example/app/LogMethodParam.java) annotation. Update the application configuration in [application.yaml](service4/src/main/resources/application.yml) or set the following enviroment variables,
 
 ```
 export SERVICE_4_PORT=8083
