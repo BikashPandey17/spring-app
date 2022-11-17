@@ -27,8 +27,10 @@ public class AppService {
         this.guildTableRepository = guildTableRepository;
     }
 
+    @LogMethodParam
     public void insertTableRow(GuildTableInsertRequest data) {
         GuildTable row = GuildTable.builder()
+                .id(data.getId())
                 .name(data.getName())
                 .color(data.getColor())
                 .parentid(data.getParentid())

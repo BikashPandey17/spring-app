@@ -1,13 +1,16 @@
 package com.example.app;
 
 public class GuildTableInsertRequest {
+
+    private Integer id;
     private Integer parentid;
     private String name;
     private String color;
 
     protected GuildTableInsertRequest() {}
 
-    public GuildTableInsertRequest(Integer parentid, String name, String color) {
+    public GuildTableInsertRequest(Integer id, Integer parentid, String name, String color) {
+        this.id = id;
         this.parentid = parentid;
         this.name = name;
         this.color = color;
@@ -25,6 +28,14 @@ public class GuildTableInsertRequest {
         return color;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public void setParentid(Integer parentid) {
         this.parentid = parentid;
     }
@@ -37,9 +48,12 @@ public class GuildTableInsertRequest {
         this.color = color;
     }
 
+
+
     @Override
     public String toString() {
         return "GuildTableInsertRequest{" +
+                "id=" + id +
                 "parentid=" + parentid +
                 ", name='" + name + '\'' +
                 ", color='" + color + '\'' +

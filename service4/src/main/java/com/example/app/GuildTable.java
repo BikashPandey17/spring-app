@@ -13,17 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class GuildTable {
-
     @Id
-    @SequenceGenerator(
-            name = "guild_table_id_sequence",
-            sequenceName = "guild_table_id_sequence"
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "guild_table_id_sequence"
-    )
-
     private Integer id;
     private Integer parentid;
     private String name;
