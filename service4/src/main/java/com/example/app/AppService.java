@@ -56,18 +56,13 @@ public class AppService {
     public List getAll() {
         long count = guildTableRepository.count();
         Page<GuildTable> out = guildTableRepository.findAll(PageRequest.of(0, (int)count));
-        try {
-            List resp = out.stream()
-                    .filter(k -> k.getParentid() > 0)
-                    .collect(Collectors.groupingBy(GuildTable::getParentid))
-                    .entrySet().stream()
-                    .map(v1 -> Map.of("Name", Objects.requireNonNull(out.stream().filter(k -> k.getId() == v1.getKey()).map(GuildTable::getName).findFirst().orElse(null)),
-                                      "Sub Classes", v1.getValue()))
-                    .collect(toList());
-            return resp;
-        } catch (NullPointerException nullPointerException) {
-            logger.error("No records with proper parent id mapping");
-            throw nullPointerException;
-        }
+        List resp = out.stream()
+                .filter(k -> k.getParentid() > 0)
+                .collect(Collectors.groupingBy(GuildTable::getParentid))
+                .entrySet().stream()
+                .map(v1 -> Map.of("Name", Objects.requireNonNull(out.stream().filter(k -> k.getId() == v1.getKey()).map(GuildTable::getName).findFirst().orElse("")),
+                                  "Sub Classes", v1.getValue()))
+                .collect(toList());
+        return resp;
     }
 }
