@@ -13,6 +13,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.ConnectException;
+import java.util.Map;
 
 @Validated
 @Service
@@ -21,7 +22,7 @@ public class AppService {
     private final ServiceTwoConfig serviceTwoConfig;
     private final ServiceThreeConfig serviceThreeConfig;
 
-    private static Logger logger = LoggerFactory.getLogger(AppService.class);
+    private static final Logger logger = LoggerFactory.getLogger(AppService.class);
 
     @Autowired
     public AppService(RestTemplate restTemplate, ServiceTwoConfig serviceTwoConfig, ServiceThreeConfig serviceThreeConfig) {
@@ -30,7 +31,7 @@ public class AppService {
         this.serviceThreeConfig = serviceThreeConfig;
     }
 
-    public ResponseEntity logic(Name name) throws Exception, ConnectException {
+    public ResponseEntity<String> logic(Name name) throws Exception, ConnectException {
         logger.info("Service 1 post request: " + name.getFirstName() + " " + name.getLastName());
         String serviceThreeResp = restTemplate.postForObject(
                 serviceThreeConfig.getUri(),
@@ -42,6 +43,6 @@ public class AppService {
                 String.class,
                 serviceThreeResp
         );
-        return new ResponseEntity(resp, HttpStatus.OK);
+        return new ResponseEntity<>(resp, HttpStatus.OK);
     }
 }

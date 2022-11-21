@@ -1,8 +1,9 @@
 package com.example.app;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
@@ -19,6 +20,10 @@ public class LoggingAspect {
     public Object logMethodParam(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("Enter: {}.{}() with argument[s] = {}", joinPoint.getSignature().getDeclaringTypeName(),
                 joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()));
+        List<String> st = List.of("a", "b");
+        ArrayList<String> al = new ArrayList<>();
+
+
         return joinPoint.proceed();
     }
 }
